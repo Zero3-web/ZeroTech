@@ -186,6 +186,24 @@
   .donate-btn:hover {
     background: #52e0c4 !important;
   }
+  .hero-section {
+    margin-top: 60px !important;
+    margin-bottom: 36px !important;
+  }
+  .about-section,
+  .experience-section,
+  .projects-section,
+  .donations-section,
+  .all-projects-section {
+    margin-top: 44px !important;
+    margin-bottom: 44px !important;
+  }
+  .footer {
+    margin-top: 44px !important;
+  }
+  .section-gap {
+    height: 44px !important;
+  }
 }
 
 /* Ajustes generales para móviles */
@@ -345,6 +363,24 @@
   }
   .footer-content p {
     font-size: 0.95rem !important;
+  }
+  .hero-section {
+    margin-top: 36px !important;
+    margin-bottom: 32px !important;
+  }
+  .about-section,
+  .experience-section,
+  .projects-section,
+  .donations-section,
+  .all-projects-section {
+    margin-top: 32px !important;
+    margin-bottom: 32px !important;
+  }
+  .footer {
+    margin-top: 32px !important;
+  }
+  .section-gap {
+    height: 32px !important;
   }
 }
 
