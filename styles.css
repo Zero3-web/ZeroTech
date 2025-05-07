@@ -80,7 +80,7 @@ body {
 
 .socials {
   position: fixed;
-  top: 120px;
+  top: 200px; /* antes 120px, ahora más abajo */
   left: 32px;
   display: flex;
   flex-direction: column;
