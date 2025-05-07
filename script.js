@@ -12,7 +12,12 @@ window.addEventListener('DOMContentLoaded', () => {
   window.setTimeout(() => {
     document.body.classList.add('loaded');
     const loader = document.getElementById('loader');
-    if (loader) loader.style.display = 'none';
+    if (loader) {
+      loader.addEventListener('transitionend', function handler() {
+        loader.style.display = 'none';
+        loader.removeEventListener('transitionend', handler);
+      });
+    }
   }, 1200); // 1.2s para mostrar animación
 });
 
