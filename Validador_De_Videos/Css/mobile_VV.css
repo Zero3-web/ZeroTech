@@ -1,0 +1,65 @@
+/* Aplica solo en pantallas de hasta 600px de ancho */
+@media (max-width: 600px) {
+    body {
+        font-size: 1.3em !important;
+        padding: 0 2vw;
+        overflow: hidden;
+    }
+    #video-container {
+        width: 100vw !important;
+        max-width: 100vw !important;
+        margin: 10px auto !important;
+        display: flex !important;
+        justify-content: center !important;
+        align-items: center !important;
+        padding: 0 !important;
+    }
+    #player {
+        width: 100vw !important;
+        height: 60vw !important; /* Más alto para agrandar */
+        max-width: 100vw !important;
+        max-height: 60vw !important;
+        margin: 0 auto !important;
+        display: block !important;
+        background: #000 !important;
+    }
+    iframe {
+        width: 100vw !important;
+        height: 60vw !important;
+        max-width: 100vw !important;
+        max-height: 60vw !important;
+        display: block !important;
+        margin: 0 auto !important;
+        background: #000 !important;
+    }
+    #timer-container {
+        width: 90px !important;
+        margin: 18px auto !important;
+    }
+    #timer-svg {
+        width: 90px !important;
+        height: 90px !important;
+    }
+    #contador-container {
+        font-size: 1.2em !important;
+        margin: 16px 0;
+    }
+    #mensaje {
+        font-size: 1.2em !important;
+        margin-top: 24px;
+    }
+    .modal-ayuda-contenido {
+        max-width: 98vw;
+        padding: 22px 4vw;
+        font-size: 1.1em;
+    }
+    .instruccion-adelantar {
+        font-size: 1.1em;
+        padding: 14px 6vw;
+        max-width: 98vw;
+    }
+    h1 {
+        font-size: 1.7em !important;
+        margin: 16px 0;
+    }
+}

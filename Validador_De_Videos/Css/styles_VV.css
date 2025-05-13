@@ -1,0 +1,379 @@
+body {
+    font-family: Arial, sans-serif;
+    background: #181919 !important;
+    color: #ccd6f6 !important;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    min-width: 100vw;
+    width: 100vw;
+    height: 100vh;
+    box-sizing: border-box;
+    position: relative;
+    overflow-x: hidden;
+}
+body.light-theme {
+    background: #f7fafc !important;
+    color: #181833 !important;
+}
+#video-container {
+    margin: 30px auto;
+    width: 560px;
+    max-width: 90vw;
+    margin-bottom: 80px;
+}
+
+#contador-container {
+    font-size: 1.2em;
+    margin: 20px 0;
+}
+#mensaje {
+    margin-top: 30px;
+    font-size: 1.3em;
+    color: green;
+    font-weight: bold;
+}
+#timer\.svg {
+    display: block;
+    margin: 20px auto;
+    width: 80px;
+    opacity: 0.3;
+    transition: opacity 0.5s;
+}
+#timer-container {
+    width: 90px;
+    margin: 20px auto;
+}
+#timer-svg {
+    display: block;
+    margin: 0 auto;
+}
+#timer-progress {
+    transition: stroke-dashoffset 1s linear;
+}
+.animar-felicitacion {
+    animation: pop-fade 1s cubic-bezier(.68,-0.55,.27,1.55);
+}
+@keyframes pop-fade {
+    0% { transform: scale(0.7); opacity: 0; }
+    60% { transform: scale(1.1); opacity: 1; }
+    100% { transform: scale(1); opacity: 1; }
+}
+.modal-ayuda {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0; top: 0; right: 0; bottom: 0;
+    background: rgba(0,0,0,0.5);
+    align-items: center;
+    justify-content: center;
+}
+.modal-ayuda-contenido {
+    background: #fff;
+    padding: 12px 8px;
+    border-radius: 12px;
+    max-width: 280px;
+    margin: auto;
+    text-align: left;
+    box-shadow: 0 4px 24px rgba(0,0,0,0.18);
+    font-size: 0.98em;
+    margin-bottom: 80px;
+}
+.modal-ayuda-contenido h2 {
+    margin-top: 0;
+}
+.modal-ayuda-contenido button {
+    margin-top: 18px;
+    padding: 8px 18px;
+    background: #2196f3;
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 1em;
+    transition: background 0.2s;
+}
+.modal-ayuda-contenido button:hover {
+    background: #1769aa;
+}
+.instruccion-adelantar {
+    position: fixed;
+    top: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #fff3cd;
+    color: #856404;
+    border: 1px solid #ffeeba;
+    padding: 14px 24px;
+    border-radius: 8px;
+    font-size: 1.1em;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+    z-index: 2000;
+    max-width: 90vw;
+    text-align: center;
+    animation: fadeInDown 0.4s;
+}
+@keyframes fadeInDown {
+    from { opacity: 0; transform: translate(-50%, -30px);}
+    to { opacity: 1; transform: translate(-50%, 0);}
+}
+h1 {
+    font-size: 2em;
+    margin: 20px 0;
+}
+#vale-modal .modal-ayuda-contenido {
+    text-align: center;
+    position: relative;
+}
+#vale-contenido {
+    position: relative;
+    overflow: hidden;
+}
+#vale-contenido #marca-agua {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    opacity: 0.15;
+    pointer-events: none;
+}
+#vale-cerrar-x {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: transparent;
+    border: none;
+    font-size: 1.6em;
+    line-height: 1;
+    color: #888;
+    cursor: pointer;
+    z-index: 10;
+    padding: 0;
+    transition: color 0.2s;
+}
+#vale-cerrar-x:hover {
+    color: #f44336;
+}
+
+/* Redes sociales al pie */
+.footer-redes {
+    width: 100vw;
+    max-width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 18px;
+    padding: 12px 0 8px 0;
+    background: transparent;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    z-index: 9999;
+}
+.footer-redes a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    background: #fff;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+    transition: background 0.2s, box-shadow 0.2s;
+    text-decoration: none;
+}
+.footer-redes a:hover {
+    background: #2196f3;
+    box-shadow: 0 4px 16px rgba(33,150,243,0.12);
+}
+.footer-redes svg {
+    width: 22px;
+    height: 22px;
+    fill: #2196f3;
+    transition: fill 0.2s;
+}
+.footer-redes a:hover svg {
+    fill: #fff;
+}
+
+.info-github {
+    color: #1769aa;
+    background: #e3f2fd;
+    border-radius: 6px;
+    padding: 6px 6px;
+    font-weight: 500;
+    display: inline-block;
+    margin-right: 1.3rem;
+    margin-top: 2rem;
+}
+.info-github a {
+    color: #0d47a1;
+    text-decoration: underline;
+    font-weight: 600;
+}
+.info-github a:hover {
+    color: #2196f3;
+}
+
+.main-footer {
+    width: 100vw;
+    background: #000000;
+    border-top: 1px solid #e0e0e0;
+    padding: 0 0 4px 0;
+    margin-top: 32px;
+    box-sizing: border-box;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    z-index: 100;
+}
+.footer-redes {
+    justify-content: center;
+    gap: 18px;
+    padding: 12px 0 4px 0;
+    background: transparent;
+    position: static;
+}
+.footer-links {
+    text-align: center;
+    margin: 0 0 4px 0;
+    font-size: 0.98em;
+    color: #1769aa;
+}
+.footer-links a {
+    color: #1769aa;
+    text-decoration: underline;
+    margin: 0 4px;
+    transition: color 0.2s;
+}
+.footer-links a:hover {
+    color: #2196f3;
+}
+.footer-links span {
+    color: #b0bec5;
+    margin: 0 2px;
+}
+.footer-copy {
+    text-align: center;
+    font-size: 0.92em;
+    color: #888;
+    margin-bottom: 2px;
+}
+@media (max-width: 600px) {
+    body {
+        font-size: 0.95em !important;
+        padding: 0 !important;
+        margin: 0 !important;
+        overflow-x: hidden !important;
+        min-height: 100vh !important;
+        min-width: 100vw !important;
+        width: 100vw !important;
+        height: 100vh !important;
+    }
+    #video-container {
+        width: 100vw !important;
+        max-width: 100vw !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        margin-bottom: 90px !important;
+    }
+    #player, iframe {
+        width: 100vw !important;
+        height: 54vw !important;
+        max-width: 100vw !important;
+        max-height: 54vw !important;
+        margin: 0 !important;
+        padding: 0 !important;
+    }
+    #timer-container {
+        width: 70px !important;
+        margin: 4px auto !important;
+        padding: 0 !important;
+    }
+    #timer-svg {
+        width: 70px !important;
+        height: 70px !important;
+        margin: 0 !important;
+    }
+    #contador-container {
+        font-size: 0.95em !important;
+        margin: 4px 0 !important;
+        padding: 0 !important;
+    }
+    #mensaje {
+        font-size: 0.95em !important;
+        margin-top: 4px !important;
+        padding: 0 !important;
+    }
+    .modal-ayuda-contenido {
+        max-width: 100vw !important;
+        padding: px 2vw !important;
+        font-size: 0.92em !important;
+        margin-bottom: 90px !important;
+    }
+    #vale-modal .modal-ayuda-contenido {
+        max-width: 100vw !important;
+        padding: 4px 0 !important;
+        font-size: 0.95em !important;
+        margin: 0 !important;
+    }
+    #vale-contenido {
+        padding: 2px 0 !important;
+        font-size: 0.9em !important;
+        margin: 0 !important;
+    }
+    #vale-cerrar-x {
+        top: 2px !important;
+        right: 2px !important;
+        font-size: 1.2em !important;
+    }
+    #btn-reclamar {
+        width: 100% !important;
+        font-size: 0.95em !important;
+        padding: 4px 0 !important;
+        margin-top: 2px !important;
+        border-radius: 6px !important;
+    }
+    .instruccion-adelantar {
+        font-size: 0.9em !important;
+        padding: 4px 1vw !important;
+        max-width: 100vw !important;
+        margin: 0 !important;
+    }
+    h1 {
+        font-size: 1em !important;
+        margin: 4px 0 !important;
+        padding: 0 !important;
+    }
+    #vale-contenido #marca-agua {
+        width: 30px !important;
+        top: 1px !important;
+        right: 1px !important;
+    }
+    .footer-redes {
+        gap: 12px;
+        padding: 8px 0 4px 0;
+    }
+    .footer-redes a {
+        width: 32px;
+        height: 32px;
+    }
+    .footer-redes svg {
+        width: 18px;
+        height: 18px;
+    }
+    .main-footer {
+        font-size: 0.95em;
+        padding: 0 0 2px 0;
+    }
+    .footer-redes {
+        gap: 12px;
+        padding: 8px 0 2px 0;
+    }
+    .footer-links {
+        font-size: 0.92em;
+    }
+    .footer-copy {
+        font-size: 0.85em;
+    }
+}

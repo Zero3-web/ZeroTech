@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Validador de Videos</title>
+    <link rel="stylesheet" href="../Css/styles.css">
+    <link rel="stylesheet" href="../Css/light-theme.css" id="light-theme-css" disabled>
+    <link rel="stylesheet" href="../Css/responsive.css">
+    <link rel="stylesheet" href="Css/styles_VV.css">
+    <link rel="stylesheet" href="Css/mobile_VV.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script>
+      // Sincroniza el modo claro/oscuro con la página principal
+      document.addEventListener('DOMContentLoaded', function() {
+        const themeToggle = document.getElementById('theme-toggle');
+        const lightTheme = document.getElementById('light-theme-css');
+        // Lee preferencia del localStorage
+        let theme = localStorage.getItem('theme');
+        if (theme === 'light') {
+          document.body.classList.add('light-theme');
+          if (lightTheme) lightTheme.disabled = false;
+        } else {
+          document.body.classList.remove('light-theme');
+          if (lightTheme) lightTheme.disabled = true;
+        }
+        if (themeToggle) {
+          themeToggle.addEventListener('click', function() {
+            if (document.body.classList.contains('light-theme')) {
+              document.body.classList.remove('light-theme');
+              if (lightTheme) lightTheme.disabled = true;
+              localStorage.setItem('theme', 'dark');
+            } else {
+              document.body.classList.add('light-theme');
+              if (lightTheme) lightTheme.disabled = false;
+              localStorage.setItem('theme', 'light');
+            }
+          });
+        }
+      });
+    </script>
+</head>
+<body>
+    <canvas id="particles-bg"></canvas>
+    <div id="loader">
+        <span class="loader-svg-bg">
+            <svg width="120" height="120" viewBox="0 0 120 120">
+                <circle class="loader-bg-circle" cx="60" cy="60" r="48" fill="none" stroke="#233554" stroke-width="8"/>
+                <circle class="loader-anim-circle" cx="60" cy="60" r="48" fill="none" stroke="#64ffda" stroke-width="6" stroke-linecap="round"/>
+            </svg>
+        </span>
+        <span class="loader-text">
+            <span class="z">Z</span><span class="e">e</span><span class="r">r</span><span class="o">o</span>
+        </span>
+    </div>
+    <!-- Copia de la navbar principal -->
+    <nav class="navbar">
+      <div class="logo">
+        <a href="../index.html#home"><span>Z</span></a>
+      </div>
+      <button id="hamburger" aria-label="Open menu">
+        <span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
+      </button>
+      <ul class="nav-links">
+        <li><a href="../index.html#home">Home</a></li>
+        <li><a href="../index.html#experience">Experience</a></li>
+        <li><a href="../index.html#work">Projects</a></li>
+        <li><a href="../index.html#contact">Contact</a></li>
+        <li>
+          <button id="theme-toggle" aria-label="Toggle light/dark mode">
+            <span id="theme-icon">🌙</span>
+          </button>
+        </li>
+      </ul>
+    </nav>
+    <aside class="socials">
+      <a href="#"><img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/github.svg" alt="GitHub"></a>
+      <a href="#"><img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/instagram.svg" alt="Instagram"></a>
+      <a href="#"><img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/twitter.svg" alt="Twitter"></a>
+      <a href="#"><img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/linkedin.svg" alt="LinkedIn"></a>
+      <a href="#"><img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/codepen.svg" alt="Codepen"></a>
+    </aside>
+    <div id="ayuda-modal" class="modal-ayuda">
+        <div class="modal-ayuda-contenido">
+            <h2>¿Cómo funciona?</h2>
+            <ul>
+                <li>Mira el video al menos 15 segundos sin adelantar ni retroceder.</li>
+                <li>Ver el video me ayuda a crecer en YouTube. ¡Tu apoyo es muy valioso!</li>
+                <span class="info-github">No se te pedirá ningún dato personal en ningún momento. El código de esta página es público y puedes revisarlo en <a href="https://github.com/Zero3-web/Video_Validator" target="_blank">GitHub</a>, así que es segura.</span>
+
+            </ul>
+            <button onclick="cerrarAyuda()">De acuerdo, Continuar!</button>
+        </div>
+    </div>
+    <h1>Zero Tech - Youtube</h1>
+    <div id="video-container" style="background:#fff;border-radius:16px;box-shadow:0 4px 24px rgba(0,0,0,0.10);padding:18px;max-width:600px;margin:0 auto 24px;">
+        <iframe id="player" width="560" height="315" src="https://www.youtube.com/embed/xQByz0Kv3L4?enablejsapi=1&wmode=opaque" frameborder="0" allowfullscreen
+            style="background:#fff;border-radius:12px;display:block;margin:0 auto;"></iframe>
+        <!-- Video insertado como iframe pero con enablejsapi=1 para permitir control JS -->
+    </div>
+    <div id="timer-container" style="width:110px;margin:20px auto;">
+        <svg id="timer-svg" width="100" height="100" viewBox="0 0 100 100" style="display:block;margin:0 auto;">
+            <defs>
+                <linearGradient id="timer-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stop-color="#64ffda"/>
+                    <stop offset="100%" stop-color="#233554"/>
+                </linearGradient>
+                <filter id="glow" x="-40%" y="-40%" width="180%" height="180%">
+                    <feGaussianBlur stdDeviation="3.5" result="coloredBlur"/>
+                    <feMerge>
+                        <feMergeNode in="coloredBlur"/>
+                        <feMergeNode in="SourceGraphic"/>
+                    </feMerge>
+                </filter>
+            </defs>
+            <!-- Fondo gris azulado principal -->
+            <circle cx="50" cy="50" r="44" stroke="#233554" stroke-width="10" fill="none"/>
+            <!-- Progreso con gradiente y glow -->
+            <circle id="timer-progress" cx="50" cy="50" r="44" stroke="url(#timer-gradient)" stroke-width="10" fill="none"
+                stroke-linecap="round" stroke-dasharray="276.46" stroke-dashoffset="0" filter="url(#glow)" />
+            <!-- Icono de reloj en el centro -->
+            <g>
+                <circle cx="50" cy="50" r="18" fill="#fff" opacity="0.97"/>
+                <circle cx="50" cy="50" r="16" fill="none" stroke="#64ffda" stroke-width="2"/>
+                <rect x="49" y="38" width="2" height="13" rx="1" fill="#233554"/>
+                <rect x="50" y="50" width="1.5" height="8" rx="0.75" fill="#64ffda" transform="rotate(45 50 50)"/>
+                <circle cx="50" cy="50" r="2.5" fill="#233554"/>
+            </g>
+        </svg>
+        <style>
+        /* Animación de glow */
+        #timer-progress {
+            filter: url(#glow);
+            transition: stroke-dashoffset 0.3s cubic-bezier(.4,2,.6,1);
+        }
+        #timer-svg g circle:first-child {
+            /* Sombra suave al fondo del reloj */
+            filter: drop-shadow(0 2px 8px rgba(35,53,84,0.10));
+        }
+        </style>
+    </div>
+    <div id="contador-container">
+        Debes ver al menos <span id="tiempo-restante">300</span> segundos del video.
+    </div>
+    <div id="mensaje"></div>
+    <!-- Modal de Vale de Felicitación -->
+    <div id="vale-modal" class="modal-ayuda">
+        <div class="modal-ayuda-contenido" style="max-width:420px;text-align:center;position:relative;">
+            <button id="vale-cerrar-x" onclick="cerrarVale()" style="position:absolute;top:10px;right:10px;background:transparent;border:none;font-size:1.6em;line-height:1;color:#888;cursor:pointer;z-index:10;">&times;</button>
+            <h2>¡Felicitaciones!</h2>
+            <div id="vale-contenido" style="background:#f9f9f9;border-radius:10px;padding:18px 10px;box-shadow:0 2px 12px rgba(0,0,0,0.07);margin-bottom:10px;position:relative;">
+                <div style="position:absolute;top:10px;right:10px;opacity:0.15;">
+                    <!-- Marca de agua: reemplaza src por tu imagen -->
+                    <img id="marca-agua" src="Img/marcadeagua.png" alt="Marca de agua" style="width:80px;"/>
+                </div>
+                <div style="font-size:1.1em;margin-bottom:8px;">Vale generado el <span id="vale-fecha"></span></div>
+                <div style="font-size:1.3em;font-weight:bold;margin-bottom:8px;">Código: <span id="vale-codigo"></span></div>
+                <svg id="vale-barcode"></svg>
+            </div>
+            <button id="btn-reclamar" onclick="reclamarVale()">Reclamar vale</button>
+        </div>
+    </div>
+    <!-- Opcional: advertencia -->
+    <!-- <div style="color:#888;font-size:0.9em;text-align:center;">Protección activa: No intentes manipular la página.</div> -->
+    <script src="https://www.youtube.com/iframe_api?cachebust=" + Date.now()></script>
+    <script src="../Js/script.js"></script>
+    <script src="Js/script_VV.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jsbarcode@3.11.5/dist/JsBarcode.all.min.js"></script>
+    <script>
+      // Hamburguesa menú responsive para Validador_De_videos
+      (function() {
+        const hamburger = document.getElementById('hamburger');
+        const navLinks = document.querySelector('.nav-links');
+        if (hamburger && navLinks) {
+          hamburger.addEventListener('click', function(e) {
+            e.stopPropagation();
+            hamburger.classList.toggle('active');
+            navLinks.classList.toggle('open');
+            document.body.classList.toggle('nav-open');
+          });
+          // Cierra el menú al hacer click en un enlace
+          navLinks.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', function() {
+              hamburger.classList.remove('active');
+              navLinks.classList.remove('open');
+              document.body.classList.remove('nav-open');
+            });
+          });
+          // Cierra el menú al hacer click fuera
+          document.addEventListener('click', function(e) {
+            if (navLinks.classList.contains('open') && !navLinks.contains(e.target) && e.target !== hamburger) {
+              hamburger.classList.remove('active');
+              navLinks.classList.remove('open');
+              document.body.classList.remove('nav-open');
+            }
+          });
+        }
+      })();
+    </script>
+    <!-- Footer igual al principal -->
+    <footer class="footer" id="contact">
+      <div class="footer-content">
+        <p>Designed &amp; built by Zero &copy; 2024</p>
+        <div class="footer-socials">
+          <a href="#"><img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/github.svg" alt="GitHub"></a>
+          <a href="#"><img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/linkedin.svg" alt="LinkedIn"></a>
+          <a href="#"><img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/twitter.svg" alt="Twitter"></a>
+        </div>
+      </div>
+    </footer>
+</body>
+</html>
