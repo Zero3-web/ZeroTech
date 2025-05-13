@@ -64,16 +64,18 @@ if (typewriter) {
 
 // Scroll-to-top button logic
 const scrollBtn = document.getElementById('scroll-to-top');
-window.addEventListener('scroll', () => {
-  if (window.scrollY > 200) {
-    scrollBtn.classList.add('visible');
-  } else {
-    scrollBtn.classList.remove('visible');
-  }
-});
-scrollBtn.addEventListener('click', () => {
-  window.scrollTo({ top: 0, behavior: 'smooth' });
-});
+if (scrollBtn) {
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 200) {
+      scrollBtn.classList.add('visible');
+    } else {
+      scrollBtn.classList.remove('visible');
+    }
+  });
+  scrollBtn.addEventListener('click', () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+}
 
 // Hamburguesa menú responsive
 const hamburger = document.getElementById('hamburger');
@@ -190,3 +192,23 @@ if (hamburger && navLinks) {
     mouse.active = false;
   });
 })();
+
+// Validador de Videos - Integración
+// Mostrar el modal del validador al hacer clic en la tarjeta
+const openValidadorBtn = document.getElementById('open-validador-btn');
+const validadorModal = document.getElementById('validador-modal');
+const closeValidadorBtn = document.getElementById('close-validador');
+const validadorApp = document.getElementById('validador-app');
+
+if (openValidadorBtn) {
+  openValidadorBtn.addEventListener('click', function(e) {
+    e.preventDefault();
+    window.open('Validador_De_videos/index.html', '_blank');
+  });
+}
+if (validadorModal && closeValidadorBtn && validadorApp) {
+  closeValidadorBtn.addEventListener('click', function() {
+    validadorModal.style.display = 'none';
+    validadorApp.innerHTML = '';
+  });
+}

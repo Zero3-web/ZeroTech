@@ -382,6 +382,15 @@
   .section-gap {
     height: 32px !important;
   }
+  #validador-modal .modal-ayuda-contenido {
+    max-width: 98vw;
+    padding: 22px 4vw;
+    font-size: 1.1em;
+  }
+  #validador-modal h2 {
+    font-size: 1.7em !important;
+    margin: 16px 0;
+  }
 }
 
 /* Desktop: más margen lateral para todo el contenido principal */

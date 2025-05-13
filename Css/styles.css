@@ -1133,3 +1133,123 @@ body.light-theme .project-links a:hover svg {
     background: #181919 !important;
   }
 }
+
+/* Validador de Videos: hereda estilos globales, pero puedes personalizar aquí si es necesario */
+#validador-modal .modal-ayuda-contenido {
+  background: #112240;
+  color: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.18);
+  font-family: 'Inter', Arial, sans-serif;
+}
+#validador-modal h2 {
+  color: #64ffda;
+}
+#validador-modal button {
+  background: #64ffda;
+  color: #112240;
+  border: none;
+  border-radius: 6px;
+  padding: 8px 18px;
+  margin-top: 18px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+#validador-modal button:hover {
+  background: #233554;
+  color: #64ffda;
+}
+#validador-modal .info-github {
+  background: #233554;
+  color: #64ffda;
+}
+#validador-modal #vale-modal .modal-ayuda-contenido {
+  background: #233554;
+  color: #fff;
+}
+#validador-modal #vale-cerrar-x {
+  color: #64ffda;
+}
+#validador-modal #vale-cerrar-x:hover {
+  color: #f44336;
+}
+#validador-modal #vale-contenido {
+  background: #0a192f;
+  color: #fff;
+}
+#validador-modal #vale-contenido #marca-agua {
+  opacity: 0.15;
+}
+
+/* Contact Section */
+.contact-section {
+  padding: 60px 0;
+  background: #181919;
+}
+
+.contact-section .section-title {
+  color: #64ffda;
+  text-align: center;
+  margin-bottom: 24px;
+}
+
+.contact-content {
+  max-width: 500px;
+  margin: 0 auto;
+  background: #112240;
+  padding: 32px 24px;
+  border-radius: 12px;
+  box-shadow: 0 2px 16px 0 rgba(0,0,0,0.08);
+}
+
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.contact-form label {
+  color: #ccd6f6;
+  font-weight: 500;
+}
+
+.contact-form input,
+.contact-form textarea {
+  padding: 10px 12px;
+  border: 1px solid #233554;
+  border-radius: 6px;
+  background: #0a192f;
+  color: #fff;
+  font-size: 1em;
+  resize: vertical;
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+  outline: none;
+  border-color: #64ffda;
+}
+
+.contact-form button[type="submit"] {
+  background: #64ffda;
+  color: #0a192f;
+  border: none;
+  border-radius: 6px;
+  padding: 12px 0;
+  font-size: 1.1em;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.contact-form button[type="submit"]:hover {
+  background: #52e0c4;
+}
+
+/* Responsive for contact section */
+@media (max-width: 600px) {
+  .contact-content {
+    padding: 18px 6px;
+  }
+}

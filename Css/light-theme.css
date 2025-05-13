@@ -71,3 +71,33 @@ body.light-theme .socials a:hover img {
 body.light-theme .project-links a:hover svg {
   filter: brightness(1.5) drop-shadow(0 0 4px #3182ce);
 }
+body.light-theme .contact-section {
+  background: #f7fafc;
+}
+body.light-theme .contact-content {
+  background: #fff;
+  box-shadow: 0 2px 16px 0 rgba(49,130,206,0.08);
+}
+body.light-theme .contact-section .section-title {
+  color: #3182ce;
+}
+body.light-theme .contact-form label {
+  color: #181833;
+}
+body.light-theme .contact-form input,
+body.light-theme .contact-form textarea {
+  background: #f7fafc;
+  color: #181833;
+  border: 1px solid #e2e8f0;
+}
+body.light-theme .contact-form input:focus,
+body.light-theme .contact-form textarea:focus {
+  border-color: #3182ce;
+}
+body.light-theme .contact-form button[type="submit"] {
+  background: #3182ce;
+  color: #fff;
+}
+body.light-theme .contact-form button[type="submit"]:hover {
+  background: #2563eb;
+}
