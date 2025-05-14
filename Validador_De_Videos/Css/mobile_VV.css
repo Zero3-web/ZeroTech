@@ -67,6 +67,31 @@
         margin-bottom: 2.6rem !important;
         display: block;
     }
+    #vale-contenido {
+        padding: 24px 10px !important;
+        font-size: 1.05em !important;
+        margin: 0 !important;
+        position: relative;
+        background: repeating-linear-gradient(135deg, rgba(0,188,188,0.08) 0 30px, transparent 30px 60px), repeating-linear-gradient(-45deg, rgba(0,188,188,0.08) 0 30px, transparent 30px 60px);
+        overflow: hidden;
+    }
+    #vale-contenido .marca-agua-text {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%) rotate(-20deg);
+        font-size: 2.1em;
+        color: rgba(0,188,188,0.13);
+        font-weight: 900;
+        letter-spacing: 0.1em;
+        pointer-events: none;
+        user-select: none;
+        white-space: nowrap;
+        z-index: 2;
+    }
+    #vale-modal .modal-ayuda-contenido {
+        padding: 18px 6vw !important;
+    }
 }
 
 /* --- Fix menú hamburguesa y nav responsive en móvil --- */

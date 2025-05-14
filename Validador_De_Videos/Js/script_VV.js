@@ -1,7 +1,7 @@
 let player;
 let tiempoVisto = 0;
 let intervalo;
-const TIEMPO_OBJETIVO = 300; // segundos
+const TIEMPO_OBJETIVO = 15; // segundos
 let lastTime = 0;
 let felicitacionMostrada = false;
 let advertenciaMostrada = false;
@@ -245,4 +245,40 @@ function copiarAlPortapapeles(texto) {
         document.execCommand('copy');
         document.body.removeChild(temp);
     }
+}
+
+function descargarVale() {
+    // Selecciona el contenedor del vale
+    const vale = document.getElementById('vale-contenido');
+    if (!vale) return;
+    // Crea un canvas vertical 9:16 (ejemplo: 720x1280)
+    const width = 720;
+    const height = 1280;
+    const scale = width / vale.offsetWidth;
+    // Usa html2canvas para renderizar el vale como imagen
+    html2canvas(vale, {
+        width: vale.offsetWidth,
+        height: vale.offsetHeight,
+        scale: scale,
+        backgroundColor: null,
+        windowWidth: document.body.scrollWidth,
+        windowHeight: document.body.scrollHeight
+    }).then(canvas => {
+        // Crea un canvas vertical 9:16 y centra el vale
+        const finalCanvas = document.createElement('canvas');
+        finalCanvas.width = width;
+        finalCanvas.height = height;
+        const ctx = finalCanvas.getContext('2d');
+        ctx.fillStyle = '#f9f9f9';
+        ctx.fillRect(0, 0, width, height);
+        // Centra el vale en el canvas vertical
+        const x = (width - canvas.width) / 2;
+        const y = (height - canvas.height) / 2;
+        ctx.drawImage(canvas, x, y);
+        // Descarga la imagen
+        const link = document.createElement('a');
+        link.download = 'vale-zerotech.png';
+        link.href = finalCanvas.toDataURL('image/png');
+        link.click();
+    });
 }

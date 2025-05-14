@@ -150,6 +150,7 @@
             <button id="vale-cerrar-x" onclick="cerrarVale()" style="position:absolute;top:10px;right:10px;background:transparent;border:none;font-size:1.6em;line-height:1;color:#888;cursor:pointer;z-index:10;">&times;</button>
             <h2>¡Felicitaciones!</h2>
             <div id="vale-contenido" style="background:#f9f9f9;border-radius:10px;padding:18px 10px;box-shadow:0 2px 12px rgba(0,0,0,0.07);margin-bottom:10px;position:relative;">
+                <span class="marca-agua-text">ZeroTech</span>
                 <div style="position:absolute;top:10px;right:10px;opacity:0.15;">
                     <!-- Marca de agua: reemplaza src por tu imagen -->
                     <img id="marca-agua" src="Img/marcadeagua.png" alt="Marca de agua" style="width:80px;"/>
@@ -158,12 +159,13 @@
                 <div style="font-size:1.3em;font-weight:bold;margin-bottom:8px;">Código: <span id="vale-codigo"></span></div>
                 <svg id="vale-barcode"></svg>
             </div>
-            <button id="btn-reclamar" onclick="reclamarVale()">Reclamar vale</button>
+            <button id="btn-descargar" onclick="descargarVale()">Descargar vale</button>
         </div>
     </div>
     <!-- Opcional: advertencia -->
     <!-- <div style="color:#888;font-size:0.9em;text-align:center;">Protección activa: No intentes manipular la página.</div> -->
     <script src="https://www.youtube.com/iframe_api?cachebust=" + Date.now()></script>
+    <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
     <script src="../Js/script.js"></script>
     <script src="Js/script_VV.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/jsbarcode@3.11.5/dist/JsBarcode.all.min.js"></script>
