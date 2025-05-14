@@ -75,3 +75,9 @@
 }
 /* NO AGREGAR reglas para .nav-links ni .nav-links.open aquí */
 /* --- Fin fix menú hamburguesa --- */
+
+  .logo span{
+        color: rgb(0, 234, 246);
+        text-decoration: none;
+        font-size: 20pt;
+    }

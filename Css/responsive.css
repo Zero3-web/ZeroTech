@@ -392,6 +392,11 @@
     font-size: 1.7em !important;
     margin: 16px 0;
   }
+  .contact-content {
+    padding-left: 5vw !important;
+    padding-right: 5vw !important;
+    box-sizing: border-box;
+  }
 }
 
 /* Desktop: más margen lateral para todo el contenido principal */

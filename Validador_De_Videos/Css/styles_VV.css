@@ -363,5 +363,11 @@ h1 {
     .footer-copy {
         font-size: 0.85em;
     }
+    .logo span{
+        color: rgb(0, 242, 255);
+        text-decoration: none;
+        font-size: 60pt;
+    }
+
 
 }
