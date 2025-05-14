@@ -117,7 +117,7 @@ function actualizarTimerSVG(restante) {
 }
 
 function mostrarFelicitaciones() {
-    // Mostrar modal de vale personalizado
+    // Mostrar modal de vale personalizado con animación suave
     const modal = document.getElementById('vale-modal');
     const fecha = new Date();
     const fechaStr = fecha.toLocaleDateString('es-ES', { year: 'numeric', month: 'long', day: 'numeric' });
@@ -134,7 +134,13 @@ function mostrarFelicitaciones() {
             margin: 0
         });
     }
-    if (modal) modal.style.display = 'flex';
+    if (modal) {
+        modal.classList.remove('visible');
+        modal.style.display = 'flex';
+        setTimeout(() => {
+            modal.classList.add('visible');
+        }, 30);
+    }
 }
 
 function mostrarAlertaTrampa() {
@@ -248,14 +254,13 @@ function copiarAlPortapapeles(texto) {
 }
 
 function descargarVale() {
-    // Selecciona el contenedor del vale
+    // Mostrar loader de descarga
+    mostrarLoaderDescarga();
     const vale = document.getElementById('vale-contenido');
     if (!vale) return;
-    // Crea un canvas vertical 9:16 (ejemplo: 720x1280)
-    const width = 720;
-    const height = 1280;
+    const width = 900;
+    const height = 1600;
     const scale = width / vale.offsetWidth;
-    // Usa html2canvas para renderizar el vale como imagen
     html2canvas(vale, {
         width: vale.offsetWidth,
         height: vale.offsetHeight,
@@ -264,21 +269,61 @@ function descargarVale() {
         windowWidth: document.body.scrollWidth,
         windowHeight: document.body.scrollHeight
     }).then(canvas => {
-        // Crea un canvas vertical 9:16 y centra el vale
         const finalCanvas = document.createElement('canvas');
         finalCanvas.width = width;
         finalCanvas.height = height;
         const ctx = finalCanvas.getContext('2d');
         ctx.fillStyle = '#f9f9f9';
         ctx.fillRect(0, 0, width, height);
-        // Centra el vale en el canvas vertical
         const x = (width - canvas.width) / 2;
         const y = (height - canvas.height) / 2;
         ctx.drawImage(canvas, x, y);
-        // Descarga la imagen
         const link = document.createElement('a');
         link.download = 'vale-zerotech.png';
         link.href = finalCanvas.toDataURL('image/png');
         link.click();
+        ocultarLoaderDescarga(true);
+    }).catch(() => {
+        ocultarLoaderDescarga(false);
     });
+}
+
+// Loader de descarga
+function mostrarLoaderDescarga() {
+    let loader = document.getElementById('descarga-loader');
+    if (!loader) {
+        loader = document.createElement('div');
+        loader.id = 'descarga-loader';
+        loader.style.position = 'fixed';
+        loader.style.top = '0';
+        loader.style.left = '0';
+        loader.style.width = '100vw';
+        loader.style.height = '100vh';
+        loader.style.background = 'rgba(0,0,0,0.35)';
+        loader.style.display = 'flex';
+        loader.style.alignItems = 'center';
+        loader.style.justifyContent = 'center';
+        loader.style.zIndex = '9999';
+        loader.innerHTML = `<div style="background:#fff;padding:32px 28px;border-radius:16px;box-shadow:0 4px 24px rgba(0,0,0,0.13);display:flex;flex-direction:column;align-items:center;gap:16px;min-width:220px;">
+            <div class='spinner' style='margin-bottom:8px;width:38px;height:38px;border:4px solid #64ffda;border-top:4px solid #233554;border-radius:50%;animation:spin 1s linear infinite;'></div>
+            <span style='font-size:1.1em;color:#233554;'>Descargando vale...</span>
+        </div>`;
+        document.body.appendChild(loader);
+        // Spinner animation
+        const style = document.createElement('style');
+        style.innerHTML = `@keyframes spin{0%{transform:rotate(0deg);}100%{transform:rotate(360deg);}}`;
+        document.head.appendChild(style);
+    } else {
+        loader.style.display = 'flex';
+    }
+}
+function ocultarLoaderDescarga(exito) {
+    const loader = document.getElementById('descarga-loader');
+    if (loader) {
+        loader.innerHTML = `<div style='background:#fff;padding:32px 28px;border-radius:16px;box-shadow:0 4px 24px rgba(0,0,0,0.13);display:flex;flex-direction:column;align-items:center;gap:16px;min-width:220px;'>
+            <span style='font-size:2.2em;color:#4caf50;'>✔️</span>
+            <span style='font-size:1.1em;color:#233554;'>¡Vale descargado!</span>
+        </div>`;
+        setTimeout(() => { loader.style.display = 'none'; }, 1600);
+    }
 }
