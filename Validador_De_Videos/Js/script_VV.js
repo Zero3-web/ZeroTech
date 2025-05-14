@@ -320,10 +320,17 @@ function mostrarLoaderDescarga() {
 function ocultarLoaderDescarga(exito) {
     const loader = document.getElementById('descarga-loader');
     if (loader) {
-        loader.innerHTML = `<div style='background:#fff;padding:32px 28px;border-radius:16px;box-shadow:0 4px 24px rgba(0,0,0,0.13);display:flex;flex-direction:column;align-items:center;gap:16px;min-width:220px;'>
+        loader.innerHTML = `<div style='background:#fff;padding:24px 18px 18px 18px;border-radius:14px;box-shadow:0 4px 24px rgba(0,0,0,0.13);display:flex;flex-direction:column;align-items:center;gap:12px;min-width:180px;position:relative;max-width:90vw;'>
+            <button id='cerrar-modal-descarga' aria-label='Cerrar' style='position:absolute;top:8px;right:10px;background:transparent;border:none;font-size:1.7em;line-height:1;color:#4caf50;cursor:pointer;z-index:10;'>&times;</button>
             <span style='font-size:2.2em;color:#4caf50;'>✔️</span>
             <span style='font-size:1.1em;color:#233554;'>¡Vale descargado!</span>
         </div>`;
-        setTimeout(() => { loader.style.display = 'none'; }, 1600);
+        // Cerrar con la X
+        document.getElementById('cerrar-modal-descarga').onclick = function() {
+            loader.style.display = 'none';
+        };
+        // Achica el modal visualmente
+        loader.querySelector('div').style.maxWidth = '320px';
+        loader.querySelector('div').style.padding = '18px 10px 10px 10px';
     }
 }
