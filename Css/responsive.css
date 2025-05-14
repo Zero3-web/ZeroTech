@@ -42,7 +42,11 @@
     border: none;
     cursor: pointer;
     z-index: 120;
-    margin-left: 12px;
+    margin-left: 12px !important;
+    margin-right: 0 !important;
+    position: relative;
+    left: 0 !important;
+    right: auto !important;
   }
   nav .nav-links,
   .navbar .nav-links,
@@ -62,9 +66,10 @@
     padding: 80px 24px 24px 24px !important;
     transition: right 0.3s !important;
     z-index: 110 !important;
-    display: flex !important;
+    display: none !important; /* Oculta el menú por defecto en mobile */
   }
   .nav-links.open {
+    display: flex !important; /* Solo muestra el menú cuando está abierto */
     right: 0 !important;
   }
   .nav-links li {
@@ -85,12 +90,6 @@
   }
   body.nav-open {
     overflow: hidden !important;
-  }
-  #hamburger {
-    margin-left: auto !important;
-    margin-right: 0 !important;
-    left: auto;
-    right: 0;
   }
   .logo {
     margin-left: 0 !important;
@@ -210,7 +209,7 @@
 @media (max-width: 600px) {
   .navbar {
     flex-direction: row !important;
-    justify-content: space-between !important;
+    justify-content: flex-start !important;
     align-items: center !important;
     padding: 14px 18px 0 18px !important;
     gap: 0 !important;
@@ -220,7 +219,7 @@
   .logo {
     order: 1;
     margin-left: 0 !important;
-    margin-right: auto !important;
+    margin-right: 0 !important;
     width: 38px !important;
     height: 38px !important;
     font-size: 1.3rem !important;
@@ -230,13 +229,14 @@
   }
   #hamburger {
     order: 2;
-    margin-left: auto !important;
+    margin-left: 12px !important;
     margin-right: 0 !important;
     position: relative;
-    right: 0;
-    left: auto;
+    left: 0 !important;
+    right: auto !important;
   }
   .nav-links {
+    display: none !important; /* Oculta el menú por defecto en mobile */
     width: 92vw !important;
     max-width: 100vw !important;
     padding: 70px 16px 16px 16px !important;
@@ -244,6 +244,7 @@
     top: 0 !important;
   }
   .nav-links.open {
+    display: flex !important; /* Solo muestra el menú cuando está abierto */
     right: 0 !important;
   }
   .hero-section {
