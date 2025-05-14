@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Más Proyectos - Zero</title>
+  <link rel="stylesheet" href="Css/styles.css">
+  <link rel="stylesheet" href="Css/light-theme.css" id="light-theme-css" disabled>
+  <link rel="stylesheet" href="Css/responsive.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <meta name="description" content="Más proyectos de Zero.">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
+</head>
+<body>
+  <nav class="navbar">
+    <div class="logo">
+      <a href="index.html#home"><span>Z</span></a>
+    </div>
+    <ul class="nav-links">
+      <li><a href="index.html#about">Home</a></li>
+      <li><a href="index.html#experience">Experience</a></li>
+      <li><a href="index.html#work">Projects</a></li>
+      <li><a href="index.html#contact">Contact</a></li>
+      <li>
+        <button id="theme-toggle" aria-label="Toggle light/dark mode">
+          <span id="theme-icon">🌙</span>
+        </button>
+      </li>
+    </ul>
+  </nav>
+  <main style="max-width:900px;margin:80px auto 0 auto;padding:0 16px;">
+    <h1 class="projects-title" style="margin-bottom:0.5em;">Más Proyectos</h1>
+    <p class="projects-subtitle">Aquí puedes ver más proyectos y experimentos.</p>
+    <div class="projects-grid">
+      <!-- Proyecto 5 -->
+      <div class="project-card" onclick="window.open('https://github.com/Zero3-web/zero-blog', '_blank')" style="cursor:pointer;">
+        <h3 class="project-name">Zero Blog</h3>
+        <p class="project-desc">Personal blog built with Nuxt.js, featuring markdown support and custom themes.</p>
+        <div class="project-image" style="background-image: url('codigo - frag.png');"></div>
+      </div>
+      <!-- Proyecto 6 -->
+      <div class="project-card" onclick="window.open('https://github.com/Zero3-web/taskify', '_blank')" style="cursor:pointer;">
+        <h3 class="project-name">Taskify</h3>
+        <p class="project-desc">A simple and beautiful task manager app for web and mobile, built with Vue 3 and Firebase.</p>
+        <div class="project-image" style="background-image: url('img/placeholder.png');"></div>
+      </div>
+      <!-- Proyecto 7 -->
+      <div class="project-card" onclick="window.open('https://github.com/Zero3-web/weatherly', '_blank')" style="cursor:pointer;">
+        <h3 class="project-name">Weatherly</h3>
+        <p class="project-desc">Weather dashboard with animated backgrounds and real-time data, built with OpenWeatherMap API.</p>
+        <div class="project-image" style="background-image: url('img/placeholder.png');"></div>
+      </div>
+      <!-- Proyecto 8 -->
+      <div class="project-card" onclick="window.open('https://github.com/Zero3-web/crypto-tracker', '_blank')" style="cursor:pointer;">
+        <h3 class="project-name">Crypto Tracker</h3>
+        <p class="project-desc">Track your favorite cryptocurrencies in real time. Built with React and CoinGecko API.</p>
+        <div class="project-image" style="background-image: url('img/placeholder.png');"></div>
+      </div>
+    </div>
+    <div style="text-align:center; margin-top: 32px;">
+      <a href="index.html#work" class="cta-btn" style="display:inline-block;padding:12px 32px;font-size:1.1em;border-radius:8px;background:#233554;color:#fff;text-decoration:none;transition:background 0.2s;">Volver</a>
+    </div>
+  </main>
+  <footer class="footer" id="contact">
+    <div class="footer-content">
+      <p>Designed &amp; built by Zero &copy; 2024</p>
+      <div class="footer-socials">
+        <a href="#"><img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/github.svg" alt="GitHub"></a>
+        <a href="https://www.youtube.com/@Zero3web"><img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/youtube.svg" alt="YouTube"></a>
+        <a href="#"><img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/tiktok.svg" alt="TikTok"></a>
+      </div>
+    </div>
+  </footer>
+  <script src="Js/script.js"></script>
+</body>
+</html>

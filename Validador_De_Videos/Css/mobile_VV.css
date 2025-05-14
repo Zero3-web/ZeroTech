@@ -3,12 +3,12 @@
     body {
         font-size: 1.3em !important;
         padding: 0 2vw;
-        overflow: hidden;
+        padding-top: 70px !important;
     }
     #video-container {
         width: 100vw !important;
         max-width: 100vw !important;
-        margin: 10px auto !important;
+        margin: 0 auto 24px auto !important;
         display: flex !important;
         justify-content: center !important;
         align-items: center !important;
@@ -63,3 +63,15 @@
         margin: 16px 0;
     }
 }
+
+/* --- Fix menú hamburguesa y nav responsive en móvil --- */
+/* SOLO refuerzo el botón y navbar, NO el menú */
+.navbar {
+  position: fixed !important;
+  top: 0; left: 0; right: 0;
+  z-index: 2000 !important;
+  width: 100vw !important;
+  background: #181919 !important;
+}
+/* NO AGREGAR reglas para .nav-links ni .nav-links.open aquí */
+/* --- Fin fix menú hamburguesa --- */

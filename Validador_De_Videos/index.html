@@ -12,6 +12,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="data:;base64,iVBORw0KGgo=">
     <script>
       // Sincroniza el modo claro/oscuro con la página principal
       document.addEventListener('DOMContentLoaded', function() {
@@ -60,11 +61,6 @@
       <div class="logo">
         <a href="../index.html#home"><span>Z</span></a>
       </div>
-      <button id="hamburger" aria-label="Open menu">
-        <span class="bar"></span>
-        <span class="bar"></span>
-        <span class="bar"></span>
-      </button>
       <ul class="nav-links">
         <li><a href="../index.html#home">Home</a></li>
         <li><a href="../index.html#experience">Experience</a></li>
@@ -98,6 +94,7 @@
     </div>
     <h1>Zero Tech - Youtube</h1>
     <div id="video-container" style="background:#fff;border-radius:16px;box-shadow:0 4px 24px rgba(0,0,0,0.10);padding:18px;max-width:600px;margin:0 auto 24px;">
+        <!-- El margen superior del video se controla por CSS para evitar que choque con la navbar -->
         <iframe id="player" width="560" height="315" src="https://www.youtube.com/embed/xQByz0Kv3L4?enablejsapi=1&wmode=opaque" frameborder="0" allowfullscreen
             style="background:#fff;border-radius:12px;display:block;margin:0 auto;"></iframe>
         <!-- Video insertado como iframe pero con enablejsapi=1 para permitir control JS -->
@@ -170,37 +167,6 @@
     <script src="../Js/script.js"></script>
     <script src="Js/script_VV.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/jsbarcode@3.11.5/dist/JsBarcode.all.min.js"></script>
-    <script>
-      // Hamburguesa menú responsive para Validador_De_videos
-      (function() {
-        const hamburger = document.getElementById('hamburger');
-        const navLinks = document.querySelector('.nav-links');
-        if (hamburger && navLinks) {
-          hamburger.addEventListener('click', function(e) {
-            e.stopPropagation();
-            hamburger.classList.toggle('active');
-            navLinks.classList.toggle('open');
-            document.body.classList.toggle('nav-open');
-          });
-          // Cierra el menú al hacer click en un enlace
-          navLinks.querySelectorAll('a').forEach(link => {
-            link.addEventListener('click', function() {
-              hamburger.classList.remove('active');
-              navLinks.classList.remove('open');
-              document.body.classList.remove('nav-open');
-            });
-          });
-          // Cierra el menú al hacer click fuera
-          document.addEventListener('click', function(e) {
-            if (navLinks.classList.contains('open') && !navLinks.contains(e.target) && e.target !== hamburger) {
-              hamburger.classList.remove('active');
-              navLinks.classList.remove('open');
-              document.body.classList.remove('nav-open');
-            }
-          });
-        }
-      })();
-    </script>
     <!-- Footer igual al principal -->
     <footer class="footer" id="contact">
       <div class="footer-content">
