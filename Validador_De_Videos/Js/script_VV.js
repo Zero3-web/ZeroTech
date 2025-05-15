@@ -1,7 +1,7 @@
 let player;
 let tiempoVisto = 0;
 let intervalo;
-const TIEMPO_OBJETIVO = 15; // segundos
+const TIEMPO_OBJETIVO = 300; // segundos
 let lastTime = 0;
 let felicitacionMostrada = false;
 let advertenciaMostrada = false;
